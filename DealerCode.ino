@@ -106,8 +106,8 @@ void startDeal(int players, int game){
                 rotateBase(0); // can change direction later
             }
             // reset position back to 0
-            for(int i = 0; i < players; i++)
-                rotateBase(1); // can change direction later
+            // for(int i = 0; i < players; i++)
+            //     rotateBase(1); // can change direction later
         }
     }
 }
@@ -122,7 +122,7 @@ void rotateBase(int dir){
     for(int l = 0; l < 250; l++){
         for(int k = 0; k < 4; k++){
             // Serial.println("step value");
-            delay(4);
+            delay(2);
             step(dir, k);
         }
     }
@@ -197,5 +197,6 @@ void dealCard(){
     // apply voltage to pin to open MOSFET
     analogWrite(MOTOR_PIN, MOTOR_ANALOG_VALUE);
     // delay(0.2); // temp value
+    delay(75);
     analogWrite(MOTOR_PIN, 0);
 }
