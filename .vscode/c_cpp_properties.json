@@ -9,6 +9,7 @@
             "name": "PlatformIO",
             "includePath": [
                 "/Users/jonathanchien/Desktop/Automated-Card-Dealer",
+                "/Users/jonathanchien/Desktop/Automated-Card-Dealer/.pio/libdeps/esp32dev/ESP8266 and ESP32 OLED driver for SSD1306 displays/src",
                 "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                 "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",
@@ -244,6 +245,7 @@
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
                     "/Users/jonathanchien/Desktop/Automated-Card-Dealer",
+                    "/Users/jonathanchien/Desktop/Automated-Card-Dealer/.pio/libdeps/esp32dev/ESP8266 and ESP32 OLED driver for SSD1306 displays/src",
                     "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
                     "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include/esp_additions/freertos",

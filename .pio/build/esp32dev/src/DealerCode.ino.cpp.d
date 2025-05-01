@@ -132,4 +132,10 @@
  /Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/spi_flash/include/esp_spi_flash_counters.h \
  /Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/esp_hw_support/include/soc/esp32/spiram.h \
  /Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/cores/esp32/io_pin_remap.h \
- /Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h
+ /Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/cores/esp32/Arduino.h \
+ macros.h \
+ .pio/libdeps/esp32dev/ESP8266\ and\ ESP32\ OLED\ driver\ for\ SSD1306\ displays/src/SSD1306Wire.h \
+ .pio/libdeps/esp32dev/ESP8266\ and\ ESP32\ OLED\ driver\ for\ SSD1306\ displays/src/OLEDDisplay.h \
+ .pio/libdeps/esp32dev/ESP8266\ and\ ESP32\ OLED\ driver\ for\ SSD1306\ displays/src/OLEDDisplayFonts.h \
+ /Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
+ /Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h

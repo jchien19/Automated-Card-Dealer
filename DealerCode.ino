@@ -1,21 +1,7 @@
 // Card dealer code
 #include <Arduino.h>
-
-// define macros
-#define MAXPLAYERS 6
-
-#define STEPPER_PIN_1 14 // To driver IN 1
-#define STEPPER_PIN_2 12 // To driver IN 2
-#define STEPPER_PIN_3 13 // To driver IN 3
-#define STEPPER_PIN_4 15 // To driver in 4
-
-// for wheel gear motor, temp value for now, need analog pin
-#define MOTOR_PIN 32
-// temporary value, need to calibrate (need to find value for ideal torque)
-#define MOTOR_ANALOG_VALUE 50
-#define BUTTON0 34 // B0 on board
-#define BUTTON1 0 // B1 on board
-#define BUTTON2 35 // B2 on board
+#include <macros.h>
+#include <SSD1306Wire.h>
 
 // define global variables
 
@@ -26,6 +12,7 @@ enum Games {
     GOFISH // 2
 };
 
+SSD1306Wire lcd(0x3c, SDA, SCL);
 void setup(){
     Serial.begin(115200);
     Serial.println("Starting");
@@ -39,6 +26,13 @@ void setup(){
     pinMode(BUTTON2, INPUT_PULLUP);
 
     pinMode(MOTOR_PIN, OUTPUT);
+    
+    lcd.init();
+    lcd.flipScreenVertically(); // flip the screen
+    lcd.setFont(ArialMT_Plain_16);
+    lcd.clear();                // clear screen
+    lcd.drawString(0, 0, "Welcome!");
+    lcd.display();
 }
 
 void loop(){
@@ -49,19 +43,34 @@ void loop(){
 
     if(!b0){
         Serial.println("Poker");
+        lcd.clear();
+        lcd.drawString(0, 0, "Poker");
+        lcd.display();
+
         startDeal(getPlayers(), 0);
     } else if(!b1){
         Serial.println("Blackjack");
+        lcd.clear();
+        lcd.drawString(0, 0, "Blackjack");
+        lcd.display();
+
         startDeal(getPlayers(), 1);
     } else if(!b2){
         Serial.println("Gofish");
+        lcd.clear();
+        lcd.drawString(0, 0, "Gofish");
+        lcd.display();
+
         startDeal(getPlayers(), 2);
     }
 
 }
 
 // temp function to avoid errors
-int getPlayers(){ return 2; }
+int getPlayers(){ 
+    // will default to 2 if nothing is done
+    return 2; // default
+}
 
 /*
 Function will be used to deal cards
