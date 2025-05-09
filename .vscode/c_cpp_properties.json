@@ -9,6 +9,7 @@
             "name": "PlatformIO",
             "includePath": [
                 "/Users/jonathanchien/Desktop/Automated-Card-Dealer",
+                "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 "/Users/jonathanchien/Desktop/Automated-Card-Dealer/.pio/libdeps/esp32dev/ESP8266 and ESP32 OLED driver for SSD1306 displays/src",
                 "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                 "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
@@ -238,13 +239,13 @@
                 "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                 "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                 "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                 ""
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "path": [
                     "/Users/jonathanchien/Desktop/Automated-Card-Dealer",
+                    "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     "/Users/jonathanchien/Desktop/Automated-Card-Dealer/.pio/libdeps/esp32dev/ESP8266 and ESP32 OLED driver for SSD1306 displays/src",
                     "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/newlib/platform_include",
                     "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/freertos/include",
@@ -474,7 +475,6 @@
                     "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src",
                     "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/WiFiClientSecure/src",
                     "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/WiFiProv/src",
-                    "/Users/jonathanchien/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src",
                     ""
                 ]
             },

@@ -2,7 +2,7 @@
 #define MACROS_H
 
 // define macros
-#define MAXPLAYERS 6
+#define MAXPLAYERS 50
 
 #define DIV {60000, 10000, 10}
 
@@ -14,7 +14,7 @@
 // for wheel gear motor, temp value for now, need analog pin
 #define MOTOR_PIN 32
 // temporary value, need to calibrate (need to find value for ideal torque)
-#define MOTOR_ANALOG_VALUE 50
+#define MOTOR_ANALOG_VALUE 150 // 100
 
 // define buttons for game selection
 #define BUTTON0 34 // B0 on board

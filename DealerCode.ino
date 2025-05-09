@@ -12,6 +12,8 @@ enum Games {
     GOFISH // 2
 };
 
+byte prevState = 1;
+
 SSD1306Wire lcd(0x3c, SDA, SCL);
 void setup(){
     Serial.begin(115200);
@@ -42,74 +44,141 @@ void loop(){
     byte b2 = digitalRead(BUTTON2);
 
     if(!b0){
-        Serial.println("Poker");
+        Serial.println("2 players");
         lcd.clear();
-        lcd.drawString(0, 0, "Poker");
+        lcd.drawString(0, 0, "2 players");
         lcd.display();
 
-        startDeal(getPlayers(), 0);
-    } else if(!b1){
-        Serial.println("Blackjack");
+        startDeal(2);
+    }else if(!b1){
+        Serial.println("3 players");
         lcd.clear();
-        lcd.drawString(0, 0, "Blackjack");
+        lcd.drawString(0, 0, "3 players");
         lcd.display();
 
-        startDeal(getPlayers(), 1);
+        startDeal(3);
     } else if(!b2){
-        Serial.println("Gofish");
+        Serial.println("4 players");
         lcd.clear();
-        lcd.drawString(0, 0, "Gofish");
+        lcd.drawString(0, 0, "4 players");
         lcd.display();
 
-        startDeal(getPlayers(), 2);
+        startDeal(4);
     }
 
+    // if(!b0 && prevState){
+    //     Serial.println("Poker");
+    //     lcd.clear();
+    //     lcd.drawString(0, 0, "Poker");
+    //     lcd.display();
+
+    //     startDeal(getPlayers(), 0);
+    // } else if(!b1 && prevState){
+    //     Serial.println("Blackjack");
+    //     lcd.clear();
+    //     lcd.drawString(0, 0, "Blackjack");
+    //     lcd.display();
+
+    //     startDeal(getPlayers(), 1);
+    // } else if(!b2 && prevState){
+    //     Serial.println("Gofish");
+    //     lcd.clear();
+    //     lcd.drawString(0, 0, "Gofish");
+    //     lcd.display();
+
+    //     startDeal(getPlayers(), 2);
+    // }
+    // prevState = 1;
 }
 
 // temp function to avoid errors
 int getPlayers(){ 
-    // will default to 2 if nothing is done
-    return 2; // default
+    // return 2 for now
+    return 4;
 }
 
 /*
 Function will be used to deal cards
 */
-void startDeal(int players, int game){
-    if(players > MAXPLAYERS){
-        Serial.println("Invalid player number!");
-    } else {
-        int cardsDealt, rounds;
-        switch(game){
-            case POKER:
-                rounds = 2;
-                cardsDealt = 1;
-                break;
-            case BLACKJACK:
-                rounds = 1;
-                cardsDealt = 2;
-                break;
-            case GOFISH:
-                rounds = 1;
-                cardsDealt = 7;
-                break;
-            default:
-                Serial.println("Unkown game!");
-                break;
-        }
-        
-        // deal cards for specific game
-        for(int r = 0; r < rounds ; r++){
-            for(int i = 0; i < players; i++){
-                for(int c = 0; c < cardsDealt; c++)
+void startDeal(int players){
+    switch(players){
+        case 2:
+            for(int k = 0; k < 2; k++){
+                for(int i = 0; i < 2; i++){
                     dealCard();
-                rotateBase(0); // can change direction later
+                    delay(1000);
+                    rotateBase2(0);
+                }
             }
-            // reset position back to 0
-            // for(int i = 0; i < players; i++)
-            //     rotateBase(1); // can change direction later
-        }
+            break;
+        case 3:
+            for(int k = 0; k < 2; k++){
+                for(int i = 0; i < 3; i++){
+                    dealCard();
+                    delay(1000);
+                    rotateBase3(0);
+                }
+            }
+            break;
+        case 4:
+            for(int k = 0; k < 2; k ++){
+                for(int i = 0; i < 4; i++){
+                    dealCard();
+                    delay(1000);
+                    rotateBase4(0);
+                }
+            }
+            break;
+        default:
+            break;
     }
+    // if(players > MAXPLAYERS){
+    //     Serial.println("Invalid player number!");
+    // } else {
+    //     int cardsDealt, rounds;
+    //     switch(game){
+    //         case POKER:
+    //             rounds = 2;
+    //             cardsDealt = 1;
+    //             break;
+    //         case BLACKJACK:
+    //             rounds = 1;
+    //             cardsDealt = 2;
+    //             break;
+    //         case GOFISH:
+    //             rounds = 1;
+    //             cardsDealt = 7;
+    //             break;
+    //         default:
+    //             Serial.println("Unkown game!");
+    //             break;
+    //     }
+        
+    //     // deal cards for specific game
+    //     for(int r = 0; r < rounds ; r++){
+    //         for(int i = 0; i < players; i++){
+    //             for(int c = 0; c < cardsDealt; c++){
+    //                 // delay(500);
+    //                 dealCard();
+    //                 Serial.println("dealt");
+    //                 delay(1000);
+    //             }
+    //             if(i < players - 1){
+    //                 // rotateBase(0);
+    //                 rotateBase(1);
+    //             }
+    //         }
+    //         // reset position back to 0
+    //         for(int i = 0; i < players - 1; i++)
+    //             rotateBase(1); // can change direction later
+    //     }
+
+    // }
+
+    // for(int i = 0; i < players; i++){
+    //     dealCard();
+    //     rotateBase(0);
+    // }
 }
 
 /*
@@ -119,10 +188,39 @@ Function to rotate base gear.
 */
 void rotateBase(int dir){
     // setting l = 250 is about 1/2 a turn of the motor, 500 is about 1, etc
-    for(int l = 0; l < 250; l++){
+    for(int l = 0; l < 3200; l++){
         for(int k = 0; k < 4; k++){
-            // Serial.println("step value");
-            delay(2);
+            delay(2); // needs to stay at 2
+            step(dir, k);
+        }
+    }
+}
+
+void rotateBase2(int dir){
+    // setting l = 250 is about 1/2 a turn of the motor, 500 is about 1, etc
+    for(int l = 0; l < 1600; l++){
+        for(int k = 0; k < 4; k++){
+            delay(2); // needs to stay at 2
+            step(dir, k);
+        }
+    }
+}
+
+void rotateBase3(int dir){
+    // setting l = 250 is about 1/2 a turn of the motor, 500 is about 1, etc
+    for(int l = 0; l < 1067; l++){
+        for(int k = 0; k < 4; k++){
+            delay(2); // needs to stay at 2
+            step(dir, k);
+        }
+    }
+}
+
+void rotateBase4(int dir){
+    // setting l = 250 is about 1/2 a turn of the motor, 500 is about 1, etc
+    for(int l = 0; l < 800; l++){
+        for(int k = 0; k < 4; k++){
+            delay(2); // needs to stay at 2
             step(dir, k);
         }
     }
@@ -193,10 +291,10 @@ void step(int dir, int rotNum){
 Function will be used to deal one card
 */
 void dealCard(){
+    Serial.println("Spun");
     // spin dc gear motor once
     // apply voltage to pin to open MOSFET
     analogWrite(MOTOR_PIN, MOTOR_ANALOG_VALUE);
-    // delay(0.2); // temp value
-    delay(75);
-    analogWrite(MOTOR_PIN, 0);
+    delay(125); // 150 
+    analogWrite(MOTOR_PIN, LOW);
 }
